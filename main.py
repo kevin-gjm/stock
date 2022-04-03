@@ -1,7 +1,5 @@
 from Utils.UtilsStock import getContractData
-from Utils.UtilsStock import StockData
 
-stockData = getContractData("20210309", "20220304", "TA205")
-print(stockData)
-for data in stockData:
-    print(data)
+stockData = getContractData("20210309", "20220304", "TA203")
+for s in stockData:
+    print(s.date)

@@ -5,23 +5,7 @@ DATA_PATH = "data/"
 
 
 class StockData:
-    def __init__(self):
-        self.tVolume = None
-        self.tRaiseFall2 = None
-        self.tRaiseFall1 = None
-        self.tSettle = None
-        self.tOpenInterest = None
-        self.tChange = None
-        self.tTurnover = None
-        self.tEnd = None
-        self.tLow = None
-        self.tHigh = None
-        self.tOpen = None
-        self.date = None
-        self.contract = None
-        self.ySettle = None
-
-    def init(self, date, contract, ySettle, tOpen, tHigh, tLow, tEnd, tSettle, tRaiseFall1, tRaiseFall2, tVolume,
+    def __init__(self, date, contract, ySettle, tOpen, tHigh, tLow, tEnd, tSettle, tRaiseFall1, tRaiseFall2, tVolume,
                  tOpenInterest, tChange, tTurnover):
         self.date = datetime.strptime(date, "%Y%m%d")
         self.contract = contract
@@ -37,7 +21,7 @@ class StockData:
         self.tOpenInterest = float(tOpenInterest)
         self.tChange = float(tChange)
         self.tTurnover = float(tTurnover)
-        return self
+
 
 class UtilsStock:
     def __init__(self, date, folder):
@@ -62,7 +46,7 @@ class UtilsStock:
 
 
 def decodeOneLine(date, line=[]):
-    stockdata = StockData().init(date, line[0], line[1], line[2], line[3], line[4], line[5], line[6], line[7], line[8],
+    stockdata = StockData(date, line[0], line[1], line[2], line[3], line[4], line[5], line[6], line[7], line[8],
                           line[9], line[10], line[11], line[12])
     # print(vars(stockdata))
     return stockdata
