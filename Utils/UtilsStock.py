@@ -4,9 +4,24 @@ from datetime import datetime, timedelta
 DATA_PATH = "data/"
 
 
+class Boll:
+    def __init__(self, up, mid, dn):
+        self.up = up
+        self.mid = mid
+        self.dn = dn
+
+
+class TechParam:
+    def __init__(self, date, contract, boll: Boll):
+        self.date = date
+        self.contract = contract
+        self.boll = boll
+
+
 class StockData:
     def __init__(self, date, contract, ySettle, tOpen, tHigh, tLow, tEnd, tSettle, tRaiseFall1, tRaiseFall2, tVolume,
                  tOpenInterest, tChange, tTurnover):
+        self.techP = None
         self.date = datetime.strptime(date, "%Y%m%d")
         self.contract = contract
         self.ySettle = float(ySettle)
@@ -21,6 +36,9 @@ class StockData:
         self.tOpenInterest = float(tOpenInterest)
         self.tChange = float(tChange)
         self.tTurnover = float(tTurnover)
+
+    def setTechParam(self, techP: TechParam):
+        self.techP = techP
 
 
 class UtilsStock:
